@@ -18,65 +18,199 @@
 			position: absolute;
 			bottom: 0;
 			left: 50%;
+			width: 12.5em;
+			height: 17.5em;
+		}
+		.card > span{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid black;
+			border-radius: 1em;
+			transform: rotateY(180deg);
+			backface-visibility: hidden;
+		}
+		.card::after{
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: purple;
+			border-radius: 1em;
+			transform: rotateY(0);
+			backface-visibility: hidden;
 		}
 		.current-card{
 			bottom: 50%;
+		}
+		.current-card > span{
+			transform: rotateY(0deg);
+		}
+		.current-card::after{
+			transform: rotateY(180deg);
 		}
 	</style>
 </head>
 <body>
 
 <ul class="cards">
-	<li class="card">Card 1</li>
-	<li class="card">Card 2</li>
-	<li class="card">Card 3</li>
-	<li class="card">Card 4</li>
-	<li class="card">Card 5</li>
-	<li class="card">Card 6</li>
-	<li class="card">Card 7</li>
-	<li class="card">Card 8</li>
-	<li class="card">Card 9</li>
-	<li class="card">Card 10</li>
-	<li class="card">Card 11</li>
-	<li class="card">Card 12</li>
-	<li class="card">Card 13</li>
-	<li class="card">Card 14</li>
-	<li class="card">Card 15</li>
-	<li class="card">Card 16</li>
-	<li class="card">Card 17</li>
-	<li class="card">Card 18</li>
-	<li class="card">Card 19</li>
-	<li class="card">Card 20</li>
-	<li class="card">Card 21</li>
-	<li class="card">Card 22</li>
-	<li class="card">Card 23</li>
-	<li class="card">Card 24</li>
-	<li class="card">Card 25</li>
-	<li class="card">Card 26</li>
-	<li class="card">Card 27</li>
-	<li class="card">Card 28</li>
-	<li class="card">Card 29</li>
-	<li class="card">Card 30</li>
-	<li class="card">Card 31</li>
-	<li class="card">Card 32</li>
-	<li class="card">Card 33</li>
-	<li class="card">Card 34</li>
-	<li class="card">Card 35</li>
-	<li class="card">Card 36</li>
-	<li class="card">Card 37</li>
-	<li class="card">Card 38</li>
-	<li class="card">Card 39</li>
-	<li class="card">Card 40</li>
-	<li class="card">Card 41</li>
-	<li class="card">Card 42</li>
-	<li class="card">Card 43</li>
-	<li class="card">Card 44</li>
-	<li class="card">Card 45</li>
-	<li class="card">Card 46</li>
-	<li class="card">Card 47</li>
-	<li class="card">Card 48</li>
-	<li class="card">Card 49</li>
-	<li class="card">Card 50</li>
+	<li class="card">
+		<span>Card 1</span>
+	</li>
+	<li class="card">
+		<span>Card 2</span>
+	</li>
+	<li class="card">
+		<span>Card 3</span>
+	</li>
+	<li class="card">
+		<span>Card 4</span>
+	</li>
+	<li class="card">
+		<span>Card 5</span>
+	</li>
+	<li class="card">
+		<span>Card 6</span>
+	</li>
+	<li class="card">
+		<span>Card 7</span>
+	</li>
+	<li class="card">
+		<span>Card 8</span>
+	</li>
+	<li class="card">
+		<span>Card 9</span>
+	</li>
+	<li class="card">
+		<span>Card 10</span>
+	</li>
+	<li class="card">
+		<span>Card 11</span>
+	</li>
+	<li class="card">
+		<span>Card 12</span>
+	</li>
+	<li class="card">
+		<span>Card 13</span>
+	</li>
+	<li class="card">
+		<span>Card 14</span>
+	</li>
+	<li class="card">
+		<span>Card 15</span>
+	</li>
+	<li class="card">
+		<span>Card 16</span>
+	</li>
+	<li class="card">
+		<span>Card 17</span>
+	</li>
+	<li class="card">
+		<span>Card 18</span>
+	</li>
+	<li class="card">
+		<span>Card 19</span>
+	</li>
+	<li class="card">
+		<span>Card 20</span>
+	</li>
+	<li class="card">
+		<span>Card 21</span>
+	</li>
+	<li class="card">
+		<span>Card 22</span>
+	</li>
+	<li class="card">
+		<span>Card 23</span>
+	</li>
+	<li class="card">
+		<span>Card 24</span>
+	</li>
+	<li class="card">
+		<span>Card 25</span>
+	</li>
+	<li class="card">
+		<span>Card 26</span>
+	</li>
+	<li class="card">
+		<span>Card 27</span>
+	</li>
+	<li class="card">
+		<span>Card 28</span>
+	</li>
+	<li class="card">
+		<span>Card 29</span>
+	</li>
+	<li class="card">
+		<span>Card 30</span>
+	</li>
+	<li class="card">
+		<span>Card 31</span>
+	</li>
+	<li class="card">
+		<span>Card 32</span>
+	</li>
+	<li class="card">
+		<span>Card 33</span>
+	</li>
+	<li class="card">
+		<span>Card 34</span>
+	</li>
+	<li class="card">
+		<span>Card 35</span>
+	</li>
+	<li class="card">
+		<span>Card 36</span>
+	</li>
+	<li class="card">
+		<span>Card 37</span>
+	</li>
+	<li class="card">
+		<span>Card 38</span>
+	</li>
+	<li class="card">
+		<span>Card 39</span>
+	</li>
+	<li class="card">
+		<span>Card 40</span>
+	</li>
+	<li class="card">
+		<span>Card 41</span>
+	</li>
+	<li class="card">
+		<span>Card 42</span>
+	</li>
+	<li class="card">
+		<span>Card 43</span>
+	</li>
+	<li class="card">
+		<span>Card 44</span>
+	</li>
+	<li class="card">
+		<span>Card 45</span>
+	</li>
+	<li class="card">
+		<span>Card 46</span>
+	</li>
+	<li class="card">
+		<span>Card 47</span>
+	</li>
+	<li class="card">
+		<span>Card 48</span>
+	</li>
+	<li class="card">
+		<span>Card 49</span>
+	</li>
+	<li class="card">
+		<span>Card 50</span>
+	</li>
 </ul>
 
 <script>
