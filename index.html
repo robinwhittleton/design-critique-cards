@@ -4,66 +4,93 @@
 	<meta charset="utf-8"/>
 	<title>Design Critique Cards</title>
 	<style>
-
+		html,
+		body{
+			margin: 0;
+			height: 100%;
+		}
+		.cards{
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+		}
+		.card{
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+		}
+		.current-card{
+			bottom: 50%;
+		}
 	</style>
 </head>
 <body>
 
-<ul id="cards">
-	<li>Card 1</li>
-	<li>Card 2</li>
-	<li>Card 3</li>
-	<li>Card 4</li>
-	<li>Card 5</li>
-	<li>Card 6</li>
-	<li>Card 7</li>
-	<li>Card 8</li>
-	<li>Card 9</li>
-	<li>Card 10</li>
-	<li>Card 11</li>
-	<li>Card 12</li>
-	<li>Card 13</li>
-	<li>Card 14</li>
-	<li>Card 15</li>
-	<li>Card 16</li>
-	<li>Card 17</li>
-	<li>Card 18</li>
-	<li>Card 19</li>
-	<li>Card 20</li>
-	<li>Card 21</li>
-	<li>Card 22</li>
-	<li>Card 23</li>
-	<li>Card 24</li>
-	<li>Card 25</li>
-	<li>Card 26</li>
-	<li>Card 27</li>
-	<li>Card 28</li>
-	<li>Card 29</li>
-	<li>Card 30</li>
-	<li>Card 31</li>
-	<li>Card 32</li>
-	<li>Card 33</li>
-	<li>Card 34</li>
-	<li>Card 35</li>
-	<li>Card 36</li>
-	<li>Card 37</li>
-	<li>Card 38</li>
-	<li>Card 39</li>
-	<li>Card 40</li>
-	<li>Card 41</li>
-	<li>Card 42</li>
-	<li>Card 43</li>
-	<li>Card 44</li>
-	<li>Card 45</li>
-	<li>Card 46</li>
-	<li>Card 47</li>
-	<li>Card 48</li>
-	<li>Card 49</li>
-	<li>Card 50</li>
+<ul class="cards">
+	<li class="card">Card 1</li>
+	<li class="card">Card 2</li>
+	<li class="card">Card 3</li>
+	<li class="card">Card 4</li>
+	<li class="card">Card 5</li>
+	<li class="card">Card 6</li>
+	<li class="card">Card 7</li>
+	<li class="card">Card 8</li>
+	<li class="card">Card 9</li>
+	<li class="card">Card 10</li>
+	<li class="card">Card 11</li>
+	<li class="card">Card 12</li>
+	<li class="card">Card 13</li>
+	<li class="card">Card 14</li>
+	<li class="card">Card 15</li>
+	<li class="card">Card 16</li>
+	<li class="card">Card 17</li>
+	<li class="card">Card 18</li>
+	<li class="card">Card 19</li>
+	<li class="card">Card 20</li>
+	<li class="card">Card 21</li>
+	<li class="card">Card 22</li>
+	<li class="card">Card 23</li>
+	<li class="card">Card 24</li>
+	<li class="card">Card 25</li>
+	<li class="card">Card 26</li>
+	<li class="card">Card 27</li>
+	<li class="card">Card 28</li>
+	<li class="card">Card 29</li>
+	<li class="card">Card 30</li>
+	<li class="card">Card 31</li>
+	<li class="card">Card 32</li>
+	<li class="card">Card 33</li>
+	<li class="card">Card 34</li>
+	<li class="card">Card 35</li>
+	<li class="card">Card 36</li>
+	<li class="card">Card 37</li>
+	<li class="card">Card 38</li>
+	<li class="card">Card 39</li>
+	<li class="card">Card 40</li>
+	<li class="card">Card 41</li>
+	<li class="card">Card 42</li>
+	<li class="card">Card 43</li>
+	<li class="card">Card 44</li>
+	<li class="card">Card 45</li>
+	<li class="card">Card 46</li>
+	<li class="card">Card 47</li>
+	<li class="card">Card 48</li>
+	<li class="card">Card 49</li>
+	<li class="card">Card 50</li>
 </ul>
 
 <script>
+	const presentCard = () => {
+		const currentCard = document.querySelector('.current-card');
+		if (currentCard) {
+			currentCard.classList.remove('current-card');
+		}
+		document.querySelectorAll('.card')[Math.floor(Math.random()*50)].classList.add('current-card');
+	}
 
+	document.body.addEventListener('click', presentCard);
+
+	presentCard();
 </script>
 </body>
 </html>
