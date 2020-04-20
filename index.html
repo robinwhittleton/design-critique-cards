@@ -12,6 +12,7 @@
 			margin: 0;
 			height: 100%;
 			background: grey;
+			font: 1em/1.375 sans-serif;
 		}
 		.cards{
 			margin: 0;
@@ -27,13 +28,15 @@
 			perspective: 600px;
 			transition: bottom var(--animation-speed);
 		}
-		.card > span{
+		.card-face{
 			position: absolute;
 			top: 0;
 			bottom: 0;
 			left: 0;
 			right: 0;
+			padding: 1em;
 			display: flex;
+			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			background: white;
@@ -43,6 +46,7 @@
 			transform: rotateY(180deg);
 			transform-style: preserve-3d;
 			backface-visibility: hidden;
+			text-align: center;
 		}
 		.card::after{
 			content: "";
@@ -59,10 +63,17 @@
 			transform-style: preserve-3d;
 			backface-visibility: hidden;
 		}
+		.card-face > p{
+			margin: 0;
+		}
+		.card-face > p + p{
+			margin-top: 1.5em;
+			font-size: .75em;
+		}
 		.current-card{
 			bottom: 50%;
 		}
-		.current-card > span{
+		.current-card > .card-face{
 			transform: rotateY(0deg);
 		}
 		.current-card::after{
@@ -74,154 +85,254 @@
 
 <ul class="cards">
 	<li class="card">
-		<span>Card 1</span>
+		<div class="card-face">
+			<p>Card 1</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 2</span>
+		<div class="card-face">
+			<p>Card 2</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 3</span>
+		<div class="card-face">
+			<p>Card 3</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 4</span>
+		<div class="card-face">
+			<p>Card 4</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 5</span>
+		<div class="card-face">
+			<p>Card 5</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 6</span>
+		<div class="card-face">
+			<p>Card 6</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 7</span>
+		<div class="card-face">
+			<p>Card 7</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 8</span>
+		<div class="card-face">
+			<p>Card 8</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 9</span>
+		<div class="card-face">
+			<p>Card 9</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 10</span>
+		<div class="card-face">
+			<p>Card 10</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 11</span>
+		<div class="card-face">
+			<p>Card 11</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 12</span>
+		<div class="card-face">
+			<p>Card 12</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 13</span>
+		<div class="card-face">
+			<p>Card 13</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 14</span>
+		<div class="card-face">
+			<p>Card 14</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 15</span>
+		<div class="card-face">
+			<p>Card 15</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 16</span>
+		<div class="card-face">
+			<p>Card 16</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 17</span>
+		<div class="card-face">
+			<p>Card 17</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 18</span>
+		<div class="card-face">
+			<p>Card 18</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 19</span>
+		<div class="card-face">
+			<p>Card 19</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 20</span>
+		<div class="card-face">
+			<p>Card 20</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 21</span>
+		<div class="card-face">
+			<p>Card 21</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 22</span>
+		<div class="card-face">
+			<p>Card 22</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 23</span>
+		<div class="card-face">
+			<p>Card 23</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 24</span>
+		<div class="card-face">
+			<p>Card 24</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 25</span>
+		<div class="card-face">
+			<p>Card 25</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 26</span>
+		<div class="card-face">
+			<p>Card 26</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 27</span>
+		<div class="card-face">
+			<p>Card 27</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 28</span>
+		<div class="card-face">
+			<p>Card 28</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 29</span>
+		<div class="card-face">
+			<p>Card 29</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 30</span>
+		<div class="card-face">
+			<p>Card 30</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 31</span>
+		<div class="card-face">
+			<p>Card 31</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 32</span>
+		<div class="card-face">
+			<p>Card 32</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 33</span>
+		<div class="card-face">
+			<p>Card 33</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 34</span>
+		<div class="card-face">
+			<p>Card 34</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 35</span>
+		<div class="card-face">
+			<p>Card 35</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 36</span>
+		<div class="card-face">
+			<p>Card 36</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 37</span>
+		<div class="card-face">
+			<p>Card 37</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 38</span>
+		<div class="card-face">
+			<p>Card 38</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 39</span>
+		<div class="card-face">
+			<p>Card 39</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 40</span>
+		<div class="card-face">
+			<p>Card 40</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 41</span>
+		<div class="card-face">
+			<p>Card 41</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 42</span>
+		<div class="card-face">
+			<p>Card 42</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 43</span>
+		<div class="card-face">
+			<p>Card 43</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 44</span>
+		<div class="card-face">
+			<p>Card 44</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 45</span>
+		<div class="card-face">
+			<p>Card 45</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 46</span>
+		<div class="card-face">
+			<p>Card 46</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 47</span>
+		<div class="card-face">
+			<p>Card 47</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 48</span>
+		<div class="card-face">
+			<p>Card 48</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 49</span>
+		<div class="card-face">
+			<p>Card 49</p>
+		</div>
 	</li>
 	<li class="card">
-		<span>Card 50</span>
+		<div class="card-face">
+			<p>Card 50</p>
+		</div>
 	</li>
 </ul>
 
