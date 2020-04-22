@@ -370,10 +370,10 @@
 <script>
 	const presentCard = () => {
 		const currentCard = document.querySelector('.current-card');
+		document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*50)].classList.add('current-card');
 		if (currentCard) {
 			currentCard.classList.remove('current-card');
 		}
-		document.querySelectorAll('.card')[Math.floor(Math.random()*50)].classList.add('current-card');
 	}
 
 	document.body.addEventListener('click', presentCard);
