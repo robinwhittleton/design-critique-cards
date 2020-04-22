@@ -4,6 +4,16 @@
 	<meta charset="utf-8"/>
 	<title>Design Critique Cards</title>
 	<style>
+		@keyframes slideout{
+			0%   { transform: rotate(0) translate(0, 0); }
+			50%  { transform: rotate(5deg) translate(5em, -25vh); }
+			100% { transform: rotate(0) translate(0, -50vh); }
+		}
+		@keyframes slidein{
+			0%   { transform: rotate(0) translate(0, -50vh); }
+			50%  { transform: rotate(-5deg) translate(-5em, -25vh); }
+			100% { transform: rotate(0) translate(0, 0); }
+		}
 		:root{
 			--animation-speed: 0.5s;
 		}
@@ -26,7 +36,7 @@
 			width: 12.5em;
 			height: 17.5em;
 			perspective: 600px;
-			transition: bottom var(--animation-speed);
+			animation: slidein var(--animation-speed) 1;
 		}
 		.card-face{
 			position: absolute;
@@ -71,7 +81,9 @@
 			font-size: .75em;
 		}
 		.current-card{
-			bottom: 50%;
+			z-index: 10;
+			transform: translate(0, -50vh);
+			animation: slideout var(--animation-speed) 1;
 		}
 		.current-card > .card-face{
 			transform: rotateY(0deg);
