@@ -21,14 +21,34 @@
 		}
 		:root{
 			--animation-speed: 0.5s;
+			--short-animation-speed: 0.15s;
 		}
 		html,
 		body{
 			margin: 0;
 			height: 100%;
 			background: grey;
+			color: black;
 			font: 1em/1.375 sans-serif;
 			overflow: hidden;
+		}
+		h1 {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			right: 5rem;
+			color: #eee;
+			margin: 0;
+			line-height: 1.1;
+		}
+		a{
+			color: #442a53;
+			text-decoration-style: wavy;
+			transition: var(--short-animation-speed) text-decoration-color;
+		}
+		a:focus,
+		a:hover{
+			text-decoration-color: lightgrey;
 		}
 		.sr-interaction{
 			clip: rect(1px, 1px, 1px, 1px);
@@ -100,6 +120,7 @@
 		}
 		.card-face > p{
 			margin: 0;
+			background: white;
 		}
 		.card-face > p + p{
 			margin-top: 1.5em;
@@ -119,11 +140,53 @@
 		.previous-card{
 			animation: var(--animation-speed) 1 slidein;
 		}
+		footer>button{
+			position: absolute;
+			top: 2em;
+			right: 2em;
+			z-index: 150;
+			-webkit-appearance: none;
+			appearance: none;
+			background: transparent;
+			padding: 0;
+			border: 0;
+			font: 1em inherit;
+		}
+		footer>button>span{
+			text-indent: -999px;
+			overflow: hidden;
+			display: block;
+			width: 2em;
+			height: 2em;
+			background: no-repeat center url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20stroke%3D%22white%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%2210%22%20viewBox%3D%220%200%20100%2060%22%3E%3Ctitle%3EMenu%20icon%3C%2Ftitle%3E%3Cpath%20d%3D%22M5%205h90M5%2030h90M5%2055h90%22%2F%3E%3C%2Fsvg%3E);
+		}
+		footer.visible>button>span{
+			background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20stroke%3D%22black%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%2210%22%20viewBox%3D%220%200%20100%2060%22%3E%3Ctitle%3EMenu%20icon%3C%2Ftitle%3E%3Cpath%20d%3D%22M5%205h90M5%2030h90M5%2055h90%22%2F%3E%3C%2Fsvg%3E);
+		}
+		footer>div{
+			box-sizing: border-box;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			z-index: 100;
+			overflow: auto;
+			padding: 2em 3em;
+			font-size: 1.25em;
+			background: white;
+			width: 60vw;
+			box-shadow: 0 0 20px grey;
+			transform: translateX(100vw);
+			transition: var(--animation-speed) transform;
+		}
+		footer.visible>div{
+			transform: translateX(40vw);
+		}
 	</style>
 </head>
 <body>
 
 <h1>Design critique cards</h1>
+
 <div class="sr-interaction">
 	<div id="aria-random-card" aria-live="polite"></div>
 	<button>
@@ -403,8 +466,19 @@
 	</li>
 </ul>
 
+<footer>
+	<button aria-hidden="true">
+		<span>Toggle footer</span>
+	</button>
+	<div>
+		<p>Powerful questions you can use to critique a design.</p>
+		<p><a href="http://daviddeleon.se/">David de Leon</a> came up with <a href="https://medium.com/@Prozpero/design-critique-cards-6cdad3f1406f">the concept</a>, <a href="https://www.robinwhittleton.com/">Robin Whittleton</a> turned it into a website. Physical packs of cards are <a href="https://www.inuse.se/shop/">available to buy from inUse</a>.</p>
+		<p>Code available <a href="https://github.com/robinwhittleton/design-critique-cards">on Github</a>.</p>
+	</div>
+</footer>
+
 <script>
-	const presentCard = () => {
+	const presentCard = event => {
 		const previousCard = document.querySelector('.previous-card');
 		const currentCard = document.querySelector('.current-card');
 		const newCard = document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*50)];
@@ -421,10 +495,25 @@
 
 		// Read card out to screenreaders
 		document.querySelector('#aria-random-card').innerHTML = newCard.querySelector('.card-face').innerHTML;
+
+		event.preventDefault();
 	}
 
-	document.querySelector('button').addEventListener('click', presentCard);
+	document.querySelector('.sr-interaction button').addEventListener('click', presentCard);
 	document.querySelector('.cards').addEventListener('click', presentCard);
+
+	// Footer info
+	const footer = document.querySelector('footer');
+	footer.querySelector('button').addEventListener('click', event => {
+		event.stopPropagation();
+		event.preventDefault();
+		footer.classList.toggle('visible');
+	});
+	document.body.addEventListener('click', event => {
+		if (!event.target.closest('footer')) {
+			footer.classList.remove('visible');
+		}
+	});
 </script>
 </body>
 </html>
