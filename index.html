@@ -5,6 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>Design Critique Cards</title>
 	<style>
+		@keyframes attractmode{
+			0%   { transform: translateY(0) rotate(0); }
+			50%  { transform: translateY(-1em) rotate(2deg); }
+		}
 		@keyframes slideout{
 			0%   { transform: rotate(0) translate(0, 0); }
 			50%  { transform: rotate(5deg) translate(5em, -25vh); }
@@ -37,21 +41,24 @@
 			position: absolute;
 		}
 		.cards{
-			margin: 0;
-			padding: 0;
-			list-style-type: none;
-		}
-		.card{
 			position: absolute;
 			bottom: -8.5em;
 			left: max(10vw, calc(50vw - 6.25em));
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			perspective: 600px;
+			font-size: 1.5em;
+			animation: var(--animation-speed) ease-in-out 2 attractmode;
+		}
+		.card{
+			position: absolute;
+			bottom: 0;
+			left: 0;
 			width: 80vw;
 			max-width: 12.5em;
 			height: 112vw;
 			max-height: 17em;
-			perspective: 600px;
-			font-size: 1.5em;
-			animation: slidein var(--animation-speed) 1;
 		}
 		.card-face{
 			position: absolute;
@@ -101,13 +108,16 @@
 		.current-card{
 			z-index: 10;
 			transform: translate(0, -50vh);
-			animation: slideout var(--animation-speed) 1;
+			animation: var(--animation-speed) 1 slideout;
 		}
 		.current-card > .card-face{
 			transform: rotateY(0deg);
 		}
 		.current-card::after{
 			transform: rotateY(180deg);
+		}
+		.previous-card{
+			animation: var(--animation-speed) 1 slidein;
 		}
 	</style>
 </head>
@@ -395,11 +405,17 @@
 
 <script>
 	const presentCard = () => {
+		const previousCard = document.querySelector('.previous-card');
 		const currentCard = document.querySelector('.current-card');
 		const newCard = document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*50)];
 
+		if (previousCard) {
+			previousCard.classList.remove('previous-card');
+		}
+
 		if (currentCard) {
 			currentCard.classList.remove('current-card');
+			currentCard.classList.add('previous-card');
 		}
 		newCard.classList.add('current-card');
 
@@ -409,8 +425,6 @@
 
 	document.querySelector('button').addEventListener('click', presentCard);
 	document.querySelector('.cards').addEventListener('click', presentCard);
-
-	presentCard();
 </script>
 </body>
 </html>
