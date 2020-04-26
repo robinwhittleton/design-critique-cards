@@ -26,6 +26,16 @@
 			font: 1em/1.375 sans-serif;
 			overflow: hidden;
 		}
+		.sr-interaction{
+			clip: rect(1px, 1px, 1px, 1px);
+			clip-path: inset(50%);
+			height: 1px;
+			width: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+		}
 		.cards{
 			margin: 0;
 			padding: 0;
@@ -103,7 +113,15 @@
 </head>
 <body>
 
-<ul class="cards">
+<h1>Design critique cards</h1>
+<div class="sr-interaction">
+	<div id="aria-random-card" aria-live="polite"></div>
+	<button>
+		<span>Read a random card</span>
+	</button>
+</div>
+
+<ul class="cards" aria-hidden="true">
 	<li class="card">
 		<div class="card-face">
 			<p>Compared to how things are today, what will be easier, simpler or more fun using this design?</p>
@@ -378,13 +396,19 @@
 <script>
 	const presentCard = () => {
 		const currentCard = document.querySelector('.current-card');
-		document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*50)].classList.add('current-card');
+		const newCard = document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*50)];
+
 		if (currentCard) {
 			currentCard.classList.remove('current-card');
 		}
+		newCard.classList.add('current-card');
+
+		// Read card out to screenreaders
+		document.querySelector('#aria-random-card').innerHTML = newCard.querySelector('.card-face').innerHTML;
 	}
 
-	document.body.addEventListener('click', presentCard);
+	document.querySelector('button').addEventListener('click', presentCard);
+	document.querySelector('.cards').addEventListener('click', presentCard);
 
 	presentCard();
 </script>
