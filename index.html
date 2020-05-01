@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>Design Critique Cards</title>
 	<link rel="manifest" href="manifest.webmanifest">
-	<link rel="apple-touch-icon" href="/images/icons-512.png">
+	<link rel="apple-touch-icon" href="images/icons-512.png">
 	<style>
 		@keyframes attractmode{
 			0%   { transform: translateY(0) rotate(0); }
@@ -521,7 +521,7 @@
 
 	// Chrome requires at least a fetch listener to make the PWA installable
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('/service-worker.js');
+		navigator.serviceWorker.register('service-worker.js');
 	}
 </script>
 </body>
