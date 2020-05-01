@@ -1,0 +1,21 @@
+{
+  "short_name": "Design Critique Cards",
+  "name": "Design Critique Cards",
+  "description": "Powerful questions you can use to critique a design.",
+  "icons": [
+    {
+      "src": "/images/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#808080",
+  "display": "standalone",
+  "theme_color": "#442a53"
+}
