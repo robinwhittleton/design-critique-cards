@@ -517,6 +517,11 @@
 			footer.classList.remove('visible');
 		}
 	});
+
+	// Chrome requires at least a fetch listener to make the PWA installable
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('/service-worker.js');
+	}
 </script>
 </body>
 </html>
