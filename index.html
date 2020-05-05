@@ -520,11 +520,24 @@
 </footer>
 
 <script>
-	const presentCard = (event, cardNumber) => {
+	const numberOfCards = document.querySelectorAll('.card').length;
+
+	const shuffleArray = array => {
+		for (let i = array.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[array[i], array[j]] = [array[j], array[i]];
+		}
+		return array;
+	}
+
+	const generateCardOrder = () => shuffleArray([...Array(numberOfCards).keys()].map(i => i+1));
+
+	let deck = generateCardOrder();
+
+	const presentCard = (event, cardNumber = deck.pop()) => {
 		const previousCard = document.querySelector('.previous-card');
 		const currentCard = document.querySelector('.current-card');
-		const newCard = cardNumber ? document.querySelector(`.card:nth-child(${cardNumber})`) :
-			document.querySelectorAll('.card:not(.current-card)')[Math.floor(Math.random()*document.querySelectorAll('.card').length)];
+		const newCard = document.querySelectorAll('.card')[cardNumber - 1];
 
 		if (previousCard) {
 			previousCard.classList.remove('previous-card');
@@ -539,6 +552,11 @@
 		// Read card out to screenreaders
 		document.querySelector('#aria-random-card').innerHTML = newCard.querySelector('.card-face').innerHTML;
 
+		// refill deck if needed
+		if (deck.length === 0) {
+			deck = generateCardOrder();
+		}
+
 		if (event) {
 			event.preventDefault();
 		}
@@ -549,7 +567,7 @@
 
 	// load specific card if supplied
 	if (window.location.hash && window.location.hash.match(/^#card-\d*$/)) {
-		presentCard(undefined, window.location.hash.replace('#card-', ''));
+		presentCard(undefined, parseInt(window.location.hash.replace('#card-', ''), 10));
 		window.requestAnimationFrame(() => {
 			window.scrollTo(0, 0);
 		});
