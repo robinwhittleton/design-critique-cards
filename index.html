@@ -579,7 +579,8 @@
 			window.scrollTo(0, 0);
 		});
 	} else {
-		document.querySelector('.cards').classList.add('attract-mode');
+		// Attract mode crashes iOS 15 Safari. Until a proper fix is found, remove it.
+		// document.querySelector('.cards').classList.add('attract-mode');
 	}
 
 	// Footer info
